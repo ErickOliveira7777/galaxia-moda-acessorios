@@ -30,15 +30,20 @@ body {
 }
 
 .card {
+  display: block;
   background: #1e293b;
   padding: 15px;
   border-radius: 10px;
   text-align: center;
   transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
 
 .card:hover {
   transform: scale(1.05);
+  border-color: #38bdf8;
 }
 
 .card img {
@@ -46,7 +51,46 @@ body {
   object-fit: contain;
 }
 
-.price {
+.card p {
   color: #22c55e;
   font-weight: bold;
+}
+
+.card h3 {
+  color: white;
+}
+
+.sidebar {
+  width: 200px;
+  background: #020617;
+  padding: 20px;
+}
+
+.sidebar button {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  background: #1e293b;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: #38bdf8;
+}
+
+button {
+  background: #38bdf8;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #020617;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #0ea5e9;
 }

@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react";
-import Header from "./components/Header";
-import ProductGrid from "./components/ProductGrid";
-import { getProducts } from "./services/api";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
+import "./App.css";
 import "./styles/global.css";
 
 function App() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getProducts();
-      setProducts(data);
-    }
-
-    fetchData();
-  }, []);
-
   return (
-    <>
-      <Header />
-      <ProductGrid products={products} />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
+    </Routes>
   );
 }
 
