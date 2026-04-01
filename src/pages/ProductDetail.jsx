@@ -26,7 +26,7 @@ export default function ProductDetail() {
 
       <br /><br />
       
-      <img src={product.image} width="200" />
+      <img src={product.thumbnail} width="200" />
       <h2>{product.title}</h2>
       <p>{product.description}</p>
       <h3>R$ {(product.price * 5).toFixed(2)}</h3>

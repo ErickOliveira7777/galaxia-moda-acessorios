@@ -1,5 +1,3 @@
-// 
-
 import { useEffect, useState } from "react";
 import {
   getProducts,
@@ -22,6 +20,7 @@ export default function Home() {
   }
 
   async function handleFilter(category) {
+    
     if (category === "all") {
       loadProducts();
     } else {

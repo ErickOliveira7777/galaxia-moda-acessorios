@@ -3,24 +3,47 @@ import { getCategories } from "../services/api";
 
 export default function CategoryFilter({ onSelect }) {
   const [categories, setCategories] = useState([]);
+  const [selected, setSelected] = useState("all");
 
   useEffect(() => {
     async function fetchCategories() {
       const data = await getCategories();
       setCategories(data);
     }
+
     fetchCategories();
   }, []);
 
-  return (
-    <div className="sidebar" style={{ padding: "20px" }}>
-      <button onClick={() => onSelect("all")}>Todos</button>
+  const handleSelect = (slug) => {
+    setSelected(slug);
+    onSelect(slug);
+  };
 
-      {categories.map((cat) => (
-        <button key={cat} onClick={() => onSelect(cat)}>
-          {cat}
-        </button>
-      ))}
-    </div>
+  return (
+    <aside className="sidebar">
+      <h2 className="sidebar-title">Categorias</h2>
+
+      <ul className="category-list">
+        <li>
+          <button
+            className={selected === "all" ? "active" : ""}
+            onClick={() => handleSelect("all")}
+          >
+            🛍️ Todos
+          </button>
+        </li>
+
+        {categories.map((cat) => (
+          <li key={cat.slug}>
+            <button
+              className={selected === cat.slug ? "active" : ""}
+              onClick={() => handleSelect(cat.slug)}
+            >
+              📦 {cat.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </aside>
   );
 }
