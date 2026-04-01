@@ -2,11 +2,15 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProductById } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
+ // const { addToCart } = useCart();
+ // const cartContext = useCart();
+ // console.log("CART CONTEXT:", cartContext);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -20,9 +24,17 @@ export default function ProductDetail() {
 
   return (
     <div style={{ padding: "20px" }}>
+      <div>
+        <button onClick={() => addToCart(product)}>
+          🛒 Adicionar ao carrinho
+        </button>
 
         {/* 🔙 Botão voltar */}
-      <button onClick={() => navigate(-1)}>⬅ Voltar</button>
+        <button onClick={() => navigate(-1)} style= {{marginLeft: "20px"}}>
+          ⬅ Voltar
+        </button>
+      </div>
+      
 
       <br /><br />
       

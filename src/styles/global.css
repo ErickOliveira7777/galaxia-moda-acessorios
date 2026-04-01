@@ -10,16 +10,24 @@ body {
   justify-content: space-between;
   padding: 20px;
   background: #020617;
+  color: "#fff";
 }
 
 .header h1 {
   font-size: 20px;
+  color: #fff;
 }
 
 .header nav a {
   margin-left: 15px;
   text-decoration: none;
   color: #38bdf8;
+}
+
+.cart {
+  color: "#fff";
+  text-decoration: "none";
+  font-weight: "bold";
 }
 
 .grid {
@@ -186,7 +194,7 @@ button:hover {
   font-weight: 600;
 }
 
-/* barrinha lateral estilo marketplace */
+/* barra lateral */
 .category-list button.active::before {
   content: "";
   position: absolute;

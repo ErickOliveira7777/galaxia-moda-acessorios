@@ -9,14 +9,17 @@ import CategoryFilter from "../components/CategoryFilter";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadProducts();
   }, []);
 
   async function loadProducts() {
+    setLoading(true);
     const data = await getProducts();
     setProducts(data);
+    setLoading(false);
   }
 
   async function handleFilter(category) {
@@ -36,9 +39,13 @@ export default function Home() {
 
       {/* Produtos */}
       <div className="grid">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {loading ? (
+          <p>Carregando produtos...</p>
+        ) : (
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        )}
       </div>
     </div>
   );
