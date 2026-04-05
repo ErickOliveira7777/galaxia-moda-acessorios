@@ -26,6 +26,8 @@ body {
 
 .cart {
   color: "#fff";
+  padding: 8px 12px;
+  border-radius: 20px;
   text-decoration: "none";
   font-weight: "bold";
 }
@@ -161,7 +163,7 @@ button:hover {
 /* item */
 .category-list li {
   margin-bottom: 6px;
-  position: relative; /* importante pro efeito lateral */
+  position: relative;
 }
 
 /* botão */

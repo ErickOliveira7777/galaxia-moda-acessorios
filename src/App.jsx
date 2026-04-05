@@ -5,8 +5,6 @@ import Header from "./components/Header";
 import Cart from "./pages/Cart";
 import "./App.css";
 import "./styles/global.css";
-import { useCart } from "./context/CartContext";
-
 
 function App() {
   return (
