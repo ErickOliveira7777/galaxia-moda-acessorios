@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCategories } from "../services/api";
 
-export default function CategoryFilter({ onSelect }) {
+export default function CategoryFilter({ onSelect, isOpen, onClose }) {
   const [categories, setCategories] = useState([]);
   const [selected, setSelected] = useState("all");
 
@@ -20,9 +20,14 @@ export default function CategoryFilter({ onSelect }) {
   };
 
   return (
-    <aside className="sidebar">
-      <h2 className="sidebar-title">Categorias</h2>
+    <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+      <div className="sidebar-header">
+        <button className="close-btn" onClick={onClose}>
+          ✖
+        </button>
 
+        <h2 className="sidebar-title">Categorias</h2>
+      </div>
       <ul className="category-list">
         <li>
           <button

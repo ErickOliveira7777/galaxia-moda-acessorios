@@ -1,16 +1,114 @@
-# React + Vite
+# 🌌 Galáxia Moda e Acessórios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação de e-commerce desenvolvida com React, com foco em experiência do usuário, organização de código e funcionalidades modernas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Demonstração
 
-## React Compiler
+> (Link para acesso será disponibilizado em breve)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📌 Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* 🛍️ Listagem de produtos
+* 🔍 Busca em tempo real com debounce
+* 🗂️ Filtro por categorias
+* 📄 Página de detalhes do produto
+* 🛒 Carrinho de compras
+* ➕ Incremento e decremento de quantidade
+* ❌ Remoção de itens
+* 💾 Persistência com localStorage
+* 🌙 Dark Mode (tema claro/escuro)
+* 📱 Layout responsivo
+* ☰ Menu mobile (sidebar com overlay)
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+* React
+* React Router DOM
+* Context API
+* JavaScript (ES6+)
+* CSS3
+
+---
+
+## 📁 Estrutura do projeto
+
+```
+src/
+│
+├── components/       # Componentes reutilizáveis
+├── pages/            # Páginas da aplicação
+├── context/          # Gerenciamento global (CartContext)
+├── services/         # Consumo de API
+├── hooks/            # Hooks customizados
+├── styles/           # Estilos globais e específicos
+│
+├── App.jsx
+├── main.jsx
+```
+
+---
+
+## ⚙️ Como rodar o projeto
+
+### 1. Clone o repositório
+
+```
+git clone https://github.com/seu-usuario/galaxia-moda.git
+```
+
+### 2. Acesse a pasta
+
+```
+cd galaxia-moda
+```
+
+### 3. Instale as dependências
+
+```
+npm install
+```
+
+### 4. Rode o projeto
+
+```
+npm run dev
+```
+
+---
+
+## 🌐 Deploy
+
+Recomendado usar:
+
+* Vercel
+* Netlify
+
+---
+
+## 💡 Aprendizados
+
+Este projeto foi desenvolvido com foco em:
+
+* Organização de código em React
+* Uso de Context API para estado global
+* Criação de hooks personalizados
+* Responsividade e UX
+* Boas práticas de desenvolvimento
+
+---
+
+## 👨‍💻 Autor
+
+**Erick Oliveira**
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
