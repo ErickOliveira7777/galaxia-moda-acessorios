@@ -1,35 +1,39 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useTheme } from "../hooks/useTheme";
 
 export default function Header() {
-  
-  const { cart = [] } = useCart() || {};
+  const { cart } = useCart();
+  const { theme, toggleTheme } = useTheme();
 
-  const totalItems = (cart || []).reduce(
-  (sum, item) => sum + item.quantity,
-  0
-);
+  const totalItems = cart.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
 
   return (
     <header className="header">
-      <div>
-          {/* Logo */}
-        <h1>🌌 Galáxia Moda e Acessórios</h1>
-      </div>
-      <div>
-          {/* Carrinho*/}
-        <Link to="/cart" className="cart">
-          🛒 ({totalItems})
-        </Link> 
-      </div>
-      <div>
-          {/* Navegação */}
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/">Produtos</Link>
-          <a href="#">Contato</a>
-        </nav>
-      </div>
+      
+      {/* Logo */}
+      <h1>🌌 Galáxia Moda e Acessórios</h1>
+
+      {/* Navegação */}
+      <nav style={{ display: "flex", gap: "15px", alignItems: "center" }}>
+        <Link to="/">Home</Link>
+        <Link to="/">Produtos</Link>
+        <a href="#">Contato</a>
+
+        {/* 🌙 Dark Mode */}
+        <button onClick={toggleTheme}>
+          {theme === "light" ? "🌙" : "☀️"}
+        </button>
+      </nav>
+
+      {/* Carrinho */}
+      <Link to="/cart" className="cart" style={{ color: "#38bdf8" }}>
+        🛒 Carrinho ({totalItems})
+      </Link>
+
     </header>
   );
 }
