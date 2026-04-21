@@ -25,7 +25,7 @@ body {
   justify-content: space-between;
   padding: 15px 40px;
   background: #020617;
-  color: "#fff";
+  color: #fff;
   align-items: center;
 }
 
@@ -91,7 +91,7 @@ body {
   object-fit: contain;
 }
 
-.card p {
+.card .price {
   color: #22c55e;
   font-weight: bold;
 }
@@ -99,6 +99,55 @@ body {
 .card h3 {
   color: #38bdf8;
 }
+
+/* CSS do Card com mais detalhes em Products*/
+
+.cardDetail {
+  display: block;
+  background: var(--card);
+  color: var(--text);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+
+  border: 2px solid #38bdf8;
+  transition: 0.3s;
+}
+
+.cardDetail:hover {
+  transform: scale(1.03);
+  border-color: cyan;
+}
+
+.cardDetail img {
+  height: 60px;
+  object-fit: contain;
+}
+
+.cardDetail h3 {
+  color: #38bdf8;
+  font-size: smaller;
+  margin: 0;
+}
+
+.cardDetail .price {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.cardDetail .description {
+  font-size: 14px;
+  color: var(--text);
+  
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+
+  overflow: hidden;
+}
+
 
 button {
   background: #38bdf8;

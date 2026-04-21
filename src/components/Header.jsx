@@ -20,8 +20,8 @@ export default function Header() {
       {/* Navegação */}
       <nav style={{ display: "flex", gap: "15px", alignItems: "center" }}>
         <Link to="/">Home</Link>
-        <Link to="/">Produtos</Link>
-        <a href="#">Contato</a>
+        <Link to="/Products">Produtos</Link>
+        <Link to="/contact">Contato</Link>
 
         {/* 🌙 Dark Mode */}
         <button onClick={toggleTheme}>

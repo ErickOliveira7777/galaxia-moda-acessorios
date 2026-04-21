@@ -1,4 +1,5 @@
 import { useCart } from "../context/CartContext";
+import { useState } from "react";
 
 export default function Cart() {
   const {
@@ -10,72 +11,118 @@ export default function Cart() {
     decreaseQuantity,
   } = useCart();
 
-  if (cart.length === 0) {
-    return (
-      <div style={{ padding: "20px" }}>
-        <h2 style={{ color: "#fff" }} >🛒 Carrinho vazio</h2>
-      </div>
-    );
-  }
+  const [msg, setMsg] = useState("");
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2 style={{ color: "#fff" }}>🛒 Seu Carrinho</h2>
-
-      {cart.map((item) => (
-        <div
-          key={item.id}
+      
+      {/* ✅ MENSAGEM */}
+      {msg && (
+        <p
           style={{
-            marginBottom: "20px",
+            background: "#22c55e",
+            color: "#fff",
             padding: "10px",
-            border: "1px solid #ccc",
-            borderRadius: "10px",
+            borderRadius: "5px",
+            marginBottom: "15px",
+            textAlign: "center",
           }}
         >
-          <h4>{item.title}</h4>
+          {msg}
+        </p>
+      )}
 
-          {/* Quantidade */}
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <button onClick={() => decreaseQuantity(item.id)}>➖</button>
+      {/* 🛒 CARRINHO VAZIO */}
+      {cart.length === 0 ? (
+        <h2 style={{ color: "#272e26ff" }}>🛒 Carrinho vazio</h2>
+      ) : (
+        <>
+          <h2 style={{ color: "#272e26ff" }}>🛒 Seu Carrinho</h2>
 
-            <span>{item.quantity}</span>
+          {cart.map((item) => (
+            <div
+              key={item.id}
+              style={{
+                marginBottom: "20px",
+                padding: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "10px",
+              }}
+            >
+              <h4>{item.title}</h4>
 
-            <button onClick={() => increaseQuantity(item.id)}>➕</button>
-          </div>
+              {/* Quantidade */}
+              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <button onClick={() => decreaseQuantity(item.id)}>➖</button>
+                <span>{item.quantity}</span>
+                <button onClick={() => increaseQuantity(item.id)}>➕</button>
+              </div>
 
-          {/* Preço */}
-          <p>
-            R$ {(item.price * item.quantity * 5).toFixed(2)}
-          </p>
+              {/* Preço */}
+              <p>
+                R$ {(item.price * item.quantity * 5).toFixed(2)}
+              </p>
 
-          {/* Remover */}
+              {/* Remover */}
+              <button
+                onClick={() => removeFromCart(item.id)}
+                style={{
+                  background: "red",
+                  color: "#fff",
+                  border: "none",
+                  padding: "5px 10px",
+                  borderRadius: "5px",
+                }}
+              >
+                ❌ Remover
+              </button>
+            </div>
+          ))}
+
+          {/* Total */}
+          <h3 style={{ marginTop: "20px" }}>
+            Total: R$ {(total * 5).toFixed(2)}
+          </h3>
+
+          {/* Limpar */}
           <button
-            onClick={() => removeFromCart(item.id)}
-            style={{ background: "red", color: "#fff", border: "none", padding: "5px 10px", borderRadius: "5px" }}
+            onClick={clearCart}
+            style={{
+              marginTop: "10px",
+              background: "#111",
+              color: "#fff",
+              padding: "10px",
+              borderRadius: "5px",
+            }}
           >
-            ❌ Remover
+            🧹 Limpar carrinho
           </button>
-        </div>
-      ))}
+        </>
+      )}
 
-      {/* Total */}
-      <h3 style={{ marginTop: "20px" }}>
-        Total: R$ {(total * 5).toFixed(2)}
-      </h3>
+      {/* 💰 FINALIZAR COMPRA */}
+      {cart.length > 0 && (
+        <button
+          onClick={() => {
+            setMsg("✅ Compra Finalizada com Sucesso!");
+            clearCart();
 
-      {/* Limpar */}
-      <button
-        onClick={clearCart}
-        style={{
-          marginTop: "10px",
-          background: "#111",
-          color: "#fff",
-          padding: "10px",
-          borderRadius: "5px",
-        }}
-      >
-        🧹 Limpar carrinho
-      </button>
+            setTimeout(() => {
+              setMsg("");
+            }, 2000);
+          }}
+          style={{
+            marginTop: "10px",
+            background: "#37d34eff",
+            color: "#fff",
+            padding: "10px",
+            borderRadius: "5px",
+            marginLeft: "5px",
+          }}
+        >
+          🪙 Finalizar Compra
+        </button>
+      )}
     </div>
   );
 }
