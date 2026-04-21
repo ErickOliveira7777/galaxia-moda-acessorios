@@ -1,25 +1,25 @@
-import axios from "axios";
+// A Api foi substituida, pois não estava funcionando
 
-const api = axios.create({
-  baseURL: "https://fakestoreapi.com"
-});
+const BASE_URL = "https://dummyjson.com";
 
 export const getProducts = async () => {
-  const response = await api.get("/products");
-  return response.data;
-};
-
-export const getProductById = async (id) => {
-  const response = await api.get(`/products/${id}`);
-  return response.data;
+  const res = await fetch(BASE_URL + "/products");
+  const data = await res.json();
+  return data.products;
 };
 
 export const getCategories = async () => {
-  const response = await api.get("/products/categories");
-  return response.data;
+  const res = await fetch(BASE_URL + "/products/categories");
+  return await res.json();
 };
 
-export const getByCategory = async (category) => {
-  const response = await api.get(`/products/category/${category}`);
-  return response.data;
+export const getProductsByCategory = async (category) => {
+  const res = await fetch(BASE_URL + `/products/category/${category}`);
+  const data = await res.json();
+  return data.products;
+};
+
+export const getProductById = async (id) => {
+  const res = await fetch(BASE_URL + `/products/${id}`);
+  return await res.json();
 };

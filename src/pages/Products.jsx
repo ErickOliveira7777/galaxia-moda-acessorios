@@ -1,14 +1,15 @@
+// Products.jsx
 import { useEffect, useState } from "react";
 import {
   getProducts,
   getProductsByCategory,
 } from "../services/api";
-import ProductCard from "../components/ProductCard";
+import ProductCardDetail from "../components/ProductCardDetail";
 import CategoryFilter from "../components/CategoryFilter";
 import SearchBar from "../components/SearchBar";
 import { useDebounce } from "../hooks/useDebounce";
 
-export default function Home() {
+export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -81,7 +82,7 @@ export default function Home() {
             <p>❌ Nenhum produto encontrado</p>
           ) : (
             filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCardDetail key={product.id} product={product} />
             ))
           )}
         </div>

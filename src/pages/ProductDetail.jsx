@@ -1,10 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProductById } from "../services/api";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
+  const [msg, setMsg] = useState("");
+
+  // ✅ CORRETO
+  const { addToCart } = useCart();
 
   useEffect(() => {
     async function fetchProduct() {
@@ -18,7 +25,32 @@ export default function ProductDetail() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <img src={product.image} width="200" />
+      <div>
+        <button
+          onClick={() => {
+            addToCart(product);
+            setMsg("✅ Produto adicionado!");
+            
+            setTimeout(() => {
+              setMsg("");
+            }, 2000);
+          }}
+        >
+          🛒 Adicionar ao carrinho
+        </button>
+
+        <button onClick={() => navigate(-1)} style={{ marginLeft: "20px" }}>
+          ⬅ Voltar
+        </button>
+      </div>
+      <di style={{ padding: "10px" }} >
+        {msg && <p style={{ color: "green" }}>{msg}</p>}
+      </di>
+      
+
+      <br /><br />
+
+      <img src={product.thumbnail} width="200" />
       <h2>{product.title}</h2>
       <p>{product.description}</p>
       <h3>R$ {(product.price * 5).toFixed(2)}</h3>
