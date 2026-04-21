@@ -5,4 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: "/galaxia-moda-acessorios/",
   plugins: [react()],
+  base: '/galaxia-moda-acessorios/'
 })
