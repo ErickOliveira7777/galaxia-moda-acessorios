@@ -305,6 +305,24 @@ button:hover {
   justify-content: center;
 }
 
+.link-cart {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* normal */
+.link-cart h2,
+.link-cart p {
+  color: #272e26ff;
+  transition: 0.3s;
+}
+
+/* hover */
+.link-cart:hover h2,
+.link-cart:hover p {
+  color: #38bdf8;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   
