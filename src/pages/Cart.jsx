@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const {
@@ -34,7 +35,10 @@ export default function Cart() {
 
       {/* 🛒 CARRINHO VAZIO */}
       {cart.length === 0 ? (
-        <h2 style={{ color: "#272e26ff" }}>🛒 Carrinho vazio</h2>
+        <Link to="/">
+          <h2 style={{ color: "#272e26ff", cursor: "pointer" }}>🛒 Adicionar Produtos</h2>
+        </Link>
+        
       ) : (
         <>
           <h2 style={{ color: "#272e26ff" }}>🛒 Seu Carrinho</h2>
